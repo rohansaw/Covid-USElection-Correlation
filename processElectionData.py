@@ -7,7 +7,8 @@ def get_election_dataset(url):
     states = get_states(url)
     polls = []
     for state in states:
-        polls.append(parse_data(state=state, data=get_data(state=state['name'], url=url)))
+        state_data = get_data(state=state['name'], url=url)
+        polls.append(parse_data(state=state, data=state_data))
     return pd.concat(polls)
 
 
@@ -34,8 +35,18 @@ def parse_data(data, state):
     df = pd.DataFrame(data)
     df['date'] = pd.to_datetime(df['date'])
     df['state'] = df['state'].apply(lambda x: x.replace(state['name'], state['shorthand']))
-    df = df.groupby(by=[df.state, df.date.dt.strftime('%B'), df.candidate]).mean()
+    df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B'), df.candidate]).mean().sort_index()
+    df = add_monthly_increase_col(df)
     return df
+
+
+def add_monthly_increase_col(df):
+    df['increase'] = df['pct_trend_adjusted'] - df['pct_trend_adjusted'].shift(2)
+    return df
+
+
+def normalized(abs_val, inhabitants):
+    return
 
 
 def get_data(state, url):
