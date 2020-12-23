@@ -1,5 +1,5 @@
 from processElectionData import get_election_dataset
-from processCovidData import get_covid_dataset, merge_population
+from processCovidData import get_covid_dataset
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
