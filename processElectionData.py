@@ -35,8 +35,12 @@ def parse_data(data, state):
     df = pd.DataFrame(data)
     df['date'] = pd.to_datetime(df['date'])
     df['state'] = df['state'].apply(lambda x: x.replace(state['name'], state['shorthand']))
-    df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B'), df.candidate]).mean().sort_index()
+    df = df[~(df['candidate'].isin(['Joseph R. Biden Jr.']))]
+    #remove
+    df = df[(df['date'].dt.month.isin([3]))]
+    df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B')]).mean().sort_index()
     df = add_monthly_increase_col(df)
+    #print(df)
     return df
 
 
