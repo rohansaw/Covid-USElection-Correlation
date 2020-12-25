@@ -35,8 +35,16 @@ def parse_data(data):
     df = merge(df, get_latitude_dataset(), 'State', 'State')
     df['date'] = pd.to_datetime(df['date'],format='%Y%m%d')
     #remove
-    df = df[(df['date'].dt.month.isin([3]))]
-    df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B')]).mean().sort_index()
+    df = df[~(df['date'].dt.month.isin([1,2]))]
+    #df['covid_increase'] = df['date'].dt.month.isin([4]) - 
+    df.sort_values(by='date')
+    #df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B')]).mean().sort_index()
+    df = df.groupby(by=[df.state, df.date.dt.strftime('%Y%m')]).mean().reset_index()
+    #df = df.groupby(as_index=False, by=[df.state, df.date.dt.strftime('%m %B')]).mean()
+    df['otm'] = df.positiveIncrease.diff()
+    df['date'] = pd.to_datetime(df['date'],format='%Y%m')
+    df.loc[(df['date'].dt.month.isin([3])), 'otm'] = 0.0
+    #df[(df['date'].dt.month.isin([1,2]))] = df[~(df['date'].dt.month.isin([1,2]))]
     #df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B')]).mean()
     df = add_monthly_increase_col(df)
     pd.set_option('display.max_rows', 50)
