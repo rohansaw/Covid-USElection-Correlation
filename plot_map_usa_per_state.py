@@ -10,7 +10,6 @@ def merge(df_covid, df_other, left_on, right_on):
 
 
 def test():
-    
     #covid = get_covid_dataset()
     #election_set = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")    
     #print(covid)

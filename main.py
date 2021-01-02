@@ -4,10 +4,14 @@ from plot_map_usa_per_state import test
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from plot_state_line import plot_state_line
 
 
 def main():
-    test()
+    covid_set = get_covid_dataset()
+    election_set = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")
+    plot_state_line(election_set, covid_set, 'FL')
+    #test()
     #return
     #covid_set = get_covid_dataset()
     #print(covid_set)
