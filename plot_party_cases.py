@@ -1,5 +1,5 @@
 def plot_party_cases(df_polls, df_covid):
-    df_biden = df_polls
+    df_biden = df_polls[df_po]
     df_trump = df_polls
 
 def buildmap():
