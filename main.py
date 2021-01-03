@@ -5,10 +5,10 @@ from plot_state_line import plot_state_line
 from plot_deaths_state import plot_map_deaths
 
 def main():
-    #covid_set = get_covid_dataset()
-    #election_set = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")
-    #plot_state_line(election_set, covid_set, 'FL')
-    #plot_map(election_set, covid_set)
+    covid_set = get_covid_dataset()
+    election_set = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")
+    plot_state_line(election_set, covid_set, 'FL')
+    plot_map(election_set, covid_set)
     plot_map_deaths()
 
 

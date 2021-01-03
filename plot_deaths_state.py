@@ -36,19 +36,16 @@ def get_frames(months, df):
         states = json.load(response)
 
     df.reset_index(level=['state', 'date'], inplace=True)
-    print(df)
     fips = us.states.mapping('abbr', 'fips')
-    print(fips)
     df['state'] = df['state'].map(lambda state: fips[state])
-    print(df)
 
     return [{
         'name': 'frame_{}'.format(month),
         'data': [{
                 'type': 'choropleth',
-                'colorscale': "Viridis",
+                'colorscale': "orrd",
                 'geojson': states,
                 'locations': df[df['date'] == month]['state'],
-                'z': df[df['date'] == month]['death']
+                'z': df[df['date'] == month]['death'] / df[df['date'] == month]['Population'],
             }]
     } for month in months]
