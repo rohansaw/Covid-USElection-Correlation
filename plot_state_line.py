@@ -16,7 +16,7 @@ def make_plot(df_polls, df_covid):
     )
 
     fig.add_trace(
-        go.Scatter(x=df_covid['date'], y=df_covid['positive'], name="Covid Positives", line=dict(color="#35b235")),
+        go.Scatter(x=df_covid['date'], y=df_covid['increase'], name="Covid Positives increase", line=dict(color="#35b235")),
         secondary_y=True,
     )
 

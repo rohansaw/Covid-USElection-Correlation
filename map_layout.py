@@ -10,7 +10,7 @@ def get_mapBoxToken():
 
 def get_mapbox():
     return {
-        'accesstoken': get_mapBoxToken,
+        'accesstoken': get_mapBoxToken(),
         'center': {"lat": 37.86, "lon": -98.00},
         'zoom': 4.0,
         'style': 'light',
