@@ -11,4 +11,7 @@ def plot_scatter_tests(df):
 
 def make_plot(df):
     fig = px.scatter(df, x="ratePositive", y="rateDeath", hover_data=['state'])
+    fig.update_layout(
+        title_text="Deaths/Population in relation to PositiveCases/Population for every state"
+    )
     fig.show()

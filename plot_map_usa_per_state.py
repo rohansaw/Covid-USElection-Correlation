@@ -19,7 +19,8 @@ def build_map(df):
     layout = go.Layout(
         sliders=get_sliders(months),
         updatemenus=[play_button],
-        mapbox=get_mapbox())
+        mapbox=get_mapbox(),
+        title_text="Title here")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
     fig.show()
@@ -42,6 +43,6 @@ def get_frames(months, df):
                           'titleside': 'top', 'thickness': 4},
             ),
             'customdata': np.stack((df.xs(month)['polls_change'], df.xs(month)['positiveIncrease'],  df.xs(month)['positiveIncrease']), axis=-1),
-            'hovertemplate': "<extra></extra><em>%{customdata[0]}  </em><br>🚨  %{customdata[0]}<br>🏡  %{customdata[1]}<br>⚰️  %{customdata[1]}",
+            'hovertemplate': "<b>Statename</b><em>%{customdata[0]}  </em><br>🚨  %{customdata[0]}<br>🏡  %{customdata[1]}<br>⚰️  %{customdata[1]}",
         }],
     } for month in months]

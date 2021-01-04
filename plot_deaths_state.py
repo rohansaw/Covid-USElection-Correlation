@@ -23,7 +23,8 @@ def build_map(df):
     layout = go.Layout(
         sliders=get_sliders(months),
         updatemenus=[play_button],
-        mapbox=get_mapbox())
+        mapbox=get_mapbox(),
+        title_text="Corona realted Deaths/Inhabitants per State evolution over Time")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
     fig.show()
@@ -51,5 +52,6 @@ def get_frames(months, df):
                 'text': df[df['date'] == month]['text'],
                 'z': df[df['date'] == month]['deathRate'],
                 'hoverinfo': 'text',
+                'colorbar': {'title': 'Deaths / 100.000 Inhabitants', 'titleside': 'top', 'thickness': 4},
             }]
     } for month in months]

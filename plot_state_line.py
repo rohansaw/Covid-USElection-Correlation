@@ -24,7 +24,7 @@ def make_plot(df_polls, df_covid):
         title_text="Covid Cases and Approval"
     )
 
-    fig.update_xaxes(title_text="xaxis title")
+    fig.update_xaxes(title_text="Date")
     fig.update_yaxes(title_text="<b>Trump vote forecast %</b>", secondary_y=False)
     fig.update_yaxes(title_text="<b>Covid postives</b>", secondary_y=True)
     fig.show()
