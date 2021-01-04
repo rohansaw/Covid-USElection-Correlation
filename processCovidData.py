@@ -39,7 +39,7 @@ def parse_data(data):
     #df['covid_increase'] = df['date'].dt.month.isin([4]) - 
     df = df.sort_values(by='date')
     #df = df.groupby(by=[df.state, df.date.dt.strftime('%m %B')]).mean().sort_index()
-    df = df.groupby(by=[df.state, df.date.dt.strftime('%Y%m')]).agg({'positive': 'mean', 'death': 'mean', 'totalTestsViral': 'sum', 'positiveIncrease': 'mean', 'Population':'mean'}).reset_index()
+    df = df.groupby(by=[df.state, df.date.dt.strftime('%Y%m')]).agg({'positive': 'mean', 'death': 'mean', 'totalTestsViral': 'sum', 'hospitalizedCumulative': 'mean', 'positiveIncrease': 'mean', 'Population':'mean'}).reset_index()
     #print(df)
     #df = df.groupby(as_index=False, by=[df.state, df.date.dt.strftime('%m %B')]).mean()
     df['otm'] = df.positiveIncrease.diff()
