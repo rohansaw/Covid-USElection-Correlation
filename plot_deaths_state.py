@@ -5,13 +5,11 @@ from urllib.request import urlopen
 import json
 from map_layout import play_button, get_mapbox, get_sliders
 import us
+import math
 
 
-def plot_map_deaths():
-    # ToDo really merge datasets properly
-    # df = pd.merge(df_covid, df_polls, left_on='state', right_on='state')
-    df = pd.read_csv('./resources/data.csv')
-    build_map(df)
+def plot_map_deaths(df_covid):
+    build_map(df_covid)
 
 
 def build_map(df):
@@ -37,7 +35,11 @@ def get_frames(months, df):
 
     df.reset_index(level=['state', 'date'], inplace=True)
     fips = us.states.mapping('abbr', 'fips')
-    df['state'] = df['state'].map(lambda state: fips[state])
+    stateNames = us.states.mapping('abbr', 'name')
+    df['fips'] = df['state'].map(lambda state: fips[state])
+    df['stateName'] = df['state'].map(lambda state: stateNames[state])
+    df['deathRate'] = df.apply(lambda row: int(math.floor(row['death'] / row['Population'] * 100000)), axis=1)
+    df['text'] = df.apply(lambda row: '<b>' + row['stateName'] + '</b> <br>' + 'Deaths/100.000: ' + str(row['deathRate']), axis=1)
 
     return [{
         'name': 'frame_{}'.format(month),
@@ -45,7 +47,9 @@ def get_frames(months, df):
                 'type': 'choropleth',
                 'colorscale': "orrd",
                 'geojson': states,
-                'locations': df[df['date'] == month]['state'],
-                'z': df[df['date'] == month]['death'] / df[df['date'] == month]['Population'],
+                'locations': df[df['date'] == month]['fips'],
+                'text': df[df['date'] == month]['text'],
+                'z': df[df['date'] == month]['deathRate'],
+                'hoverinfo': 'text',
             }]
     } for month in months]
