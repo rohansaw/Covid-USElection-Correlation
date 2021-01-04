@@ -4,27 +4,7 @@ import numpy as np
 from map_layout import play_button, get_mapbox, get_sliders
 
 
-def plot_map(df_polls, df_covid):
-    # ToDo really merge datasets properly
-    # df = pd.merge(df_covid, df_polls, left_on='state', right_on='state')
-    df = pd.read_csv('./resources/data.csv')
-    build_map(df)
-
-
-def test():
-    #covid = get_covid_dataset()
-    #election_set = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")
-    #print(covid)
-    #print(election_set)
-    #df = merge(df, election_set, 'state', 'state')
-    #print(election_set.min())
-    #print(election_set[election_set.pct_trend_adjusted == election_set.pct_trend_adjusted.min()])
-    #print(election_set.max())
-    #df = pd.merge(covid, election_set,how='outer', left_on=['state','date'], right_on = ['state','date'])
-    #df = pd.read_csv('./resources/data.csv')
-    #df.fillna(method='ffill', inplace=True)
-    #df.fillna(0, inplace=True)
-    df = pd.read_csv('./resources/data.csv')
+def plot_map(df):
     build_map(df)
 
 
