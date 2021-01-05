@@ -12,9 +12,9 @@ def main():
     df_polls = get_election_dataset("https://projects.fivethirtyeight.com/polls/president-general/")
     df_merged = merge(df_covid, df_polls)
     plot_scatter_tests(df_merged)
-    plot_state_line(df_polls, df_covid, 'FL')
-    plot_map(df_merged)
-    plot_map_deaths(df_covid)
+    #plot_state_line(df_polls, df_covid, 'FL')
+    #plot_map(df_merged)
+    #plot_map_deaths(df_covid)
 
 
 def merge(df_covid, df_polls):
@@ -24,3 +24,4 @@ def merge(df_covid, df_polls):
 
 if __name__ == "__main__":
     main()
+    
