@@ -27,7 +27,8 @@ def build_map(df):
         title_text="Corona realted Deaths/Inhabitants per State evolution over Time")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
-    fig.show()
+    #fig.show()
+    fig.write_html("./html/deaths_state.html")
 
 
 def get_frames(months, df):

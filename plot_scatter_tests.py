@@ -19,3 +19,4 @@ def make_plot(df):
     )
     fig.update_traces(textposition='top center')
     fig.show()
+    fig.write_html("./html/plot_scatter_tests.html")

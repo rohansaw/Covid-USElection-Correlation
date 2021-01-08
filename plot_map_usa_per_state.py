@@ -23,7 +23,8 @@ def build_map(df):
         title_text="Title here")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
-    fig.show()
+    #fig.show()
+    fig.write_html("./html/map_usa_per_state.html")
 
 
 def get_frames(months, df):

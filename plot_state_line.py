@@ -28,3 +28,4 @@ def make_plot(df_polls, df_covid):
     fig.update_yaxes(title_text="<b>Trump vote forecast %</b>", secondary_y=False)
     fig.update_yaxes(title_text="<b>Covid postives</b>", secondary_y=True)
     fig.show()
+    fig.write_html("./html/plot_state_line.html")
