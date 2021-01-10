@@ -24,4 +24,3 @@ def merge(df_covid, df_polls):
 
 if __name__ == "__main__":
     main()
-    
