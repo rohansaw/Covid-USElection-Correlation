@@ -47,3 +47,5 @@ sources:
 * [create animations with plotly](https://towardsdatascience.com/how-to-create-animated-scatter-maps-with-plotly-and-dash-f10bb82d357a)
 * [dataset - popularity](https://projects.fivethirtyeight.com/polls/president-general/wyoming/)
 * [dataset - covid](https://www.kaggle.com/sudalairajkumar/covid19-in-usa)
+* [pandas docs](https://pandas.pydata.org/docs/)
+* [plotly, especially maps](https://plotly.com/python/bubble-maps/)
