@@ -1,4 +1,6 @@
 # Covid-USElection-Correlation
+## Contributors
+This is a contribution by Rohan Sawahn and Lukas Laskowski.
 ## Installation
 You need python3 for using this dashboard. Please install the needed packages via: ``pip3 install -r requirements.txt``.
 
