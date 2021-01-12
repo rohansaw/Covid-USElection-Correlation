@@ -16,7 +16,6 @@ def build_map(df):
     df.sort_values(by='date')
     df = pd.pivot_table(df, index=['date', 'state'])
     months = df.index.levels[0].tolist()
-
     frames = get_frames(months, df)
     data = frames[0]['data']
 
@@ -24,7 +23,8 @@ def build_map(df):
         sliders=get_sliders(months),
         updatemenus=[play_button],
         mapbox=get_mapbox(),
-        title_text="Corona realted Deaths/Inhabitants per State evolution over Time")
+        geo = {'scope':'usa'},
+        title_text="Corona related Deaths/Inhabitants per State evolution over Time")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
     #fig.show()
@@ -46,6 +46,8 @@ def get_frames(months, df):
     return [{
         'name': 'frame_{}'.format(month),
         'data': [{
+                'zmax': 180,
+                'zmin': 0,
                 'type': 'choropleth',
                 'colorscale': "orrd",
                 'geojson': states,

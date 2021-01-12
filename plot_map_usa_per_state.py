@@ -12,7 +12,6 @@ def build_map(df):
     df.sort_values(by='date')
     df = pd.pivot_table(df, index=['date', 'state'])
     months = df.index.levels[0].tolist()
-
     frames = get_frames(months, df)
     data = frames[0]['data']
 
@@ -20,9 +19,10 @@ def build_map(df):
         sliders=get_sliders(months),
         updatemenus=[play_button],
         mapbox=get_mapbox(),
-        title_text="Title here")
+        title_text="Does a relationship exists between Trumps popularity in a specific state and the local developments in the covid-crisis?")
 
     fig = go.Figure(data=data, layout=layout, frames=frames)
+    
     #fig.show()
     fig.write_html("./html/map_usa_per_state.html")
 
@@ -39,11 +39,11 @@ def get_frames(months, df):
                 color=df.xs(month)['polls_change'],
                 showscale=True,
                 cmin=-2,
-                cmax=4,
-                colorbar={'title': 'Tägliche Neuinfektionen',
+                cmax=2,
+                colorbar={'title': 'Popularity Trump Development',
                           'titleside': 'top', 'thickness': 4},
             ),
-            'customdata': np.stack((df.xs(month)['polls_change'], df.xs(month)['positiveIncrease'],  df.xs(month)['positiveIncrease']), axis=-1),
-            'hovertemplate': "<b>Statename</b><em>%{customdata[0]}  </em><br>🚨  %{customdata[0]}<br>🏡  %{customdata[1]}<br>⚰️  %{customdata[1]}",
+            'customdata': np.stack((round(df.xs(month)['polls_change'],2), round(df.xs(month)['positiveIncrease'],0), ), axis=-1),
+            'hovertemplate': "🚨 Ø tägl. Neuinfektionen: %{customdata[1]}<br>Trumps Zustimmungsentwicklung: %{customdata[0]}",
         }],
     } for month in months]

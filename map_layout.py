@@ -29,7 +29,7 @@ def get_sliders(months):
                 'method': 'animate',
                 'args': [
                     ['frame_{}'.format(month)],
-                    {'mode': 'immediate', 'frame': {'duration': 100,
+                    {'mode': 'immediate', 'frame': {'duration': 1500,
                                                     'redraw': True}, 'transition': {'duration': 50}}
                 ],
             } for month in months]
@@ -41,12 +41,12 @@ play_button = {
     'showactive': True,
     'x': 0.045, 'y': -0.08,
     'buttons': [{
-            'label': '🎬',
+            'label': '▶',
             'method': 'animate',
             'args': [
                 None,
                 {
-                    'frame': {'duration': 1000, 'redraw': True},
+                    'frame': {'duration': 1500, 'redraw': True},
                     'transition': {'duration': 50},
                     'fromcurrent': True,
                     'mode': 'immediate',

@@ -5,13 +5,80 @@
     <script>
         $(function() {
             $("#includedContent").load("./deaths_state.html");
+            $("#explanation").load("./explanations/deaths_state_explanation.html");
         });
     </script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>GDWJGDKJ</h1>
-    <div id="includedContent"></div>
+    <script>
+        function load_map_usa_per_state() {
+            $(function() {
+                $("#includedContent").load("./map_usa_per_state.html");
+            });
+            $("#explanation").load("./explanations/map_usa_per_state_explanation.html");
+        }
+
+        function load_plot_scatter_tests() {
+            $(function() {
+                $("#includedContent").load("./plot_scatter_tests.html");
+                $("#explanation").load("./explanations/plot_scatter_tests_explanation.html");
+            });
+        }
+
+        function load_plot_state_line() {
+            $(function() {
+                $("#includedContent").load("./plot_state_line.html");
+                $("#explanation").load("./explanations/plot_state_line_explanation.html");
+            });
+        }
+
+        function load_deaths_state() {
+            $(function() {
+                $("#includedContent").load("./deaths_state.html");
+                $("#explanation").load("./explanations/deaths_state_explanation.html");
+            });
+        }
+
+        function load_our_work() {
+            $(function() {
+                $("#includedContent").load("./explanations/our_work.html");
+                $("#explanation").load("./explanations/our_work_explanation.html");
+            });
+        }
+    </script>
+    <div id="col-1">
+        <h1>COVID-19 IN THE US</h1>
+        <br>
+
+        <div class="dropdown">
+            <button class="dropbtn">Wähle eine Visualisierung</button>
+            <div class="dropdown-content">
+                <button class="button" onclick="load_deaths_state()">Todesfälle pro Staat</button>
+                <button class="button" onclick="load_plot_state_line()">Covid & Trump</button>
+                <button class="button" onclick="load_map_usa_per_state()">Covid & Trump - states</button>
+                <button class="button" onclick="load_plot_scatter_tests()">Trump vs. Biden</button>
+
+            </div>
+        </div>
+        <button class="button" onclick="load_our_work()">Unsere Arbeit erklärt</button>
+        <br>
+        <br>
+        <h5>Dies ist ein Dashboard, das die Entwicklung der Covid19-Pandemie in den USA und deren Einfluss auf die US-Politik visualisieren soll.</h5>
+        <br>
+        <br>
+        <h5>Erläuterung</h5>
+        <div id="explanation"></div>
+
+
+
+    </div>
+    <div id="col-2">
+        <div id="includedContent"></div>
+    </div>
 </body>
 
 </html>
