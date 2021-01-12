@@ -7,7 +7,7 @@ You need python3 for using this dashboard. Please install the needed packages vi
 - **Option2:** Building the html files: We have built several graphs with plotly. You can see the code of each graph in the mainfolder: They start with ``plot_``. The plotting methods are also called in the [main method](https://github.com/rohansaw/Covid-USElection-Correlation/blob/60cdbad170d608cdcac6738a4ba8e7855f54b07a/main.py#L10). You have now two choices: To build the html files you use the method ``fig.write_html`` which are commented out. You can also start each plot via ``fig.show()``.
 
 
-We further built a dashboard (usage described above). If you want to start it locally, you will have to use [serve](https://www.npmjs.com/package/serve) from npm (which builds a local server). But we recommend using the already deployed website on https://lasklu.github.io/. You can find a description of each graph at the left side of the dashboard.
+We further built a dashboard (usage described above). If you want to start it locally, you will have to use [serve](https://www.npmjs.com/package/serve) from npm (which starts a local server). But we recommend using the already deployed website on https://lasklu.github.io/. You can find a description of each graph at the left side of the dashboard.
 
 ## Tasks
 ### Task 1 - Dataset acquisition
