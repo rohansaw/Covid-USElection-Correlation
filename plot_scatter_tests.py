@@ -18,5 +18,5 @@ def make_plot(df):
         title_text="Deaths per 100.000 Inhabitants in relation to PositiveCases per 100.000 Inhabitants for every state in November 2020",
     )
     fig.update_traces(textposition='top center')
-    #fig.show()
-    fig.write_html("./html/plot_scatter_tests.html")
+    fig.show()
+    #fig.write_html("./html/plot_scatter_tests.html")
