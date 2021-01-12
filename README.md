@@ -43,7 +43,7 @@ We will describe each graph and show which results we take out of the visualised
 In summary, the covid-pandemic had a massive impact on Donald Trumps popularity. It could stabilize to a certain level in the months of summer but could not reach its level as in the before-covid-months. Not every change can be attributed to covid, but it had a significant impact on the polls and thus on the election results in november
 
 
-sources:
+## Sources
 * [create animations with plotly](https://towardsdatascience.com/how-to-create-animated-scatter-maps-with-plotly-and-dash-f10bb82d357a)
 * [dataset - popularity](https://projects.fivethirtyeight.com/polls/president-general/wyoming/)
 * [dataset - covid](https://www.kaggle.com/sudalairajkumar/covid19-in-usa)
